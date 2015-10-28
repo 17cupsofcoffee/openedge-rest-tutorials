@@ -65,15 +65,15 @@ These steps need to be carried out every time you create a new project, regardle
 ```xml
 <b:bean id="OERealmAuthProvider"
     class="com.progress.appserv.services.security.OERealmAuthProvider" >
-        <b:property name="userDetailsService">
-        	<b:ref bean="OERealmUserDetails"/>
-        </b:property>
-        
-        <b:property name="createCPAuthn" value="true" />
-        <b:property name="multiTenant" value="false" />
-        <b:property name="userDomain" value="" />
-        <b:property name="key" value="<Encoded Password>" />
-        <b:property name="authz" value="false" />
+    <b:property name="userDetailsService">
+        <b:ref bean="OERealmUserDetails"/>
+    </b:property>
+    
+    <b:property name="createCPAuthn" value="true" />
+    <b:property name="multiTenant" value="false" />
+    <b:property name="userDomain" value="" />
+    <b:property name="key" value="<Encoded Password>" />
+    <b:property name="authz" value="false" />
 </b:bean>
 ```
 * Configure `OERealmUserSettings` with the following settings.
