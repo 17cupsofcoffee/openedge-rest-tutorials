@@ -64,9 +64,9 @@ These steps need to be carried out every time you create a new project, regardle
 	* If you want to use the built-in OpenEdge user domains/database table, set `userDomain` to the name of the domain, and set `authz` to `true`. However, if you have a custom user table/authentication system, `userDomain` must be blank, and `authz` must be `false`. If you get this wrong, things will not work!
 ```xml
 <b:bean id="OERealmAuthProvider"
-        class="com.progress.appserv.services.security.OERealmAuthProvider" >
+    class="com.progress.appserv.services.security.OERealmAuthProvider" >
         <b:property name="userDetailsService">
-                    <b:ref bean="OERealmUserDetails"/>
+        	<b:ref bean="OERealmUserDetails"/>
         </b:property>
         
         <b:property name="createCPAuthn" value="true" />
