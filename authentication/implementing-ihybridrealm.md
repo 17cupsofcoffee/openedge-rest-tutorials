@@ -1,5 +1,11 @@
 # Implementing IHybridRealm
 ## Notes
+* The following methods are, by default, only used by Progress BPM's admin panel, and can be safely left as unimplemented stubs if you do not plan to use that product:
+  * `GetAttributeNames`
+  * `GetUserNames`
+  * `GetUserNamesByQuery`
+  * `RemoveAttribute`
+  * `SetAttribute`
 * There are two versions of the `ValidatePassword` method that have to be implemented as part of IHybridClass:
   * `ValidatePassword(INTEGER, CHARACTER)` are used when the server is configured to receive passwords in clear-text.
   * `ValidatePassword(INTEGER, CHARACTER, CHARACTER, CHARACTER)` is used when the server is configured to receive passwords in HTTP Digest format.
