@@ -85,7 +85,7 @@ These steps need to be carried out every time you create a new project, regardle
 ```xml
 <b:bean id="OERealmUserDetails"
         class="com.progress.appserv.services.security.OERealmUserDetailsImpl" >
-        <b:property name="realmURL" value="http://<Host Name>:<Port>/<Service Name>/apsv" />
+        <b:property name="realmURL" value="http://<Host Name>:<Port>/<Application Name>/apsv" />
         <b:property name="realmClass" value="<HybridRealm Class>" />
         <b:property name="grantedAuthorities" value="ROLE_PSCUser" />
         <b:property name="rolePrefix" value="ROLE_" />
