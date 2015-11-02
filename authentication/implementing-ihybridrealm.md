@@ -6,6 +6,34 @@
   * `GetUserNamesByQuery`
   * `RemoveAttribute`
   * `SetAttribute`
+* If not using the built-in Progress role system, `GetAttribute` needs to return static values for certain attribute names - it can't entirely be stubbed like the other functions, as it is called on every HTTP request. This can be implemented like so:
+  ```ABL
+      METHOD PUBLIC CHARACTER GetAttribute(INPUT theUserId AS INTEGER, INPUT attrName AS CHARACTER):
+          DEFINE VARIABLE retVal AS CHARACTER NO-UNDO.
+  
+          IF THIS-OBJECT:ValidateClient() = FALSE THEN
+              UNDO, THROW NEW Progress.Lang.AppError("Unauthorized client", 1).
+  
+          CASE attrname:
+              WHEN "ATTR_ROLES"   THEN retval = "PSCUser".
+              WHEN "ATTR_ENABLED" THEN retVal = "".
+              WHEN "ATTR_LOCKED"  THEN retval = "".
+              WHEN "ATTR_EXPIRED" THEN retval = "".
+          END CASE.
+         
+          RETURN retVal.
+      END METHOD.
+  ```
+  The return value for `ATTR_ROLES` should be whatever is set in the `grantedAuthorities` property of `oeablSecurity-basic-oerealm.xml`/`oeablSecurity-file-oerealm.xml`, minus the `rolePrefix`:
+  ```xml
+  <b:bean id="OERealmUserDetails"
+    class="com.progress.appserv.services.security.OERealmUserDetailsImpl">
+    ...
+    <b:property name="grantedAuthorities" value="ROLE_PSCUser" />
+    <b:property name="rolePrefix" value="ROLE_" />
+    ...
+  </b:bean>
+  ```
 * There are two versions of the `ValidatePassword` method that have to be implemented as part of IHybridClass:
   * `ValidatePassword(INTEGER, CHARACTER)` are used when the server is configured to receive passwords in clear-text.
   * `ValidatePassword(INTEGER, CHARACTER, CHARACTER, CHARACTER)` is used when the server is configured to receive passwords in HTTP Digest format.
