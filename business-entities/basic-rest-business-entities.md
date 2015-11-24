@@ -17,7 +17,7 @@ as anything listed will be exposed through the REST service.
 * A new .cls file will be generated for your business entity, set up with basic REST capabilities.
 
 ## REST Annotations
-While at this point, the business entity is functional (if somewhat minimal), it is a good idea to have an
+While at this point, the business entity is functional (if somewhat minimal), it is still a good idea to have an
 understanding of exactly how OpenEdge creates the link between your class and the REST service so that you
 can convert/update existing logic in your application. It creates this mapping through ABL annotations, both
 on the file as a whole and on the individual methods.
