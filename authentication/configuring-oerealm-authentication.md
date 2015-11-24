@@ -38,7 +38,7 @@ These steps need to be carried out every time you create a new project, regardle
 
 ### Configuring Spring Security
 * Inside your project directory, open the `WEB-INF` folder for your chosen server configuration - if you are using a Pacific Application Server instance, this will be `<Project Root>/PASOEContent/WEB-INF`, whilst on a classic AppServer this will be `<Project Root>/RESTContent/WEB-INF`.
-* In `WEB-INF/web.xml`, set `contextConfigLocation` to either `/WEB-INF/oeablSecurity-form-oerealm.xml` or `/WEB-INF/oeablSecurity-basic-oerealm.xml`, depending on which authentication method you want to utilize.
+* In `WEB-INF/web.xml`, set `contextConfigLocation` to either `/WEB-INF/oeablSecurity-form-oerealm.xml` or `/WEB-INF/oeablSecurity-basic-oerealm.xml`, depending on which authentication method you want to utilize. Basic authentication is stateless, requiring a username and password to be sent in the header of each HTTP request, whereas Form authentication uses cookie-based sessions.
 ```xml
 <context-param>
     <param-name>contextConfigLocation</param-name>
