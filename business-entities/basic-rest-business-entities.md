@@ -14,5 +14,36 @@ as anything listed will be exposed through the REST service.
   * *Note: Data Object projects/services were referred to as Mobile projects/services in OpenEdge versions prior
   to 11.6. More information on the changes of terminology can be found in the OpenEdge documentation
   [here](https://documentation.progress.com/output/ua/OpenEdge_latest/index.html#page/gspub/data-object-service-terminology-and-uri-differen.html).*
-  * A new .cls file will be generated for your business entity, set up with basic REST capabilities.
-  
+* A new .cls file will be generated for your business entity, set up with basic REST capabilities.
+
+## REST Annotations
+While at this point, the business entity is functional (if somewhat minimal), it is a good idea to have an
+understanding of exactly how OpenEdge creates the link between your class and the REST service so that you
+can convert/update existing logic in your application. It creates this mapping through ABL annotations, both
+on the file as a whole and on the individual methods.
+
+### File Annotations
+```ABL
+@program FILE(name="<Class Filename>", module="AppServer").
+@openapi.openedge.export FILE(type="REST", executionMode="singleton", useReturnValue="false", writeDataSetBeforeImage="false").
+@progress.service.resource FILE(name="<Resource Name>", URI="/<Resource Name>", schemaName="<DataSet Variable Name>", schemaFile="<Path to Schema File>").
+```
+* `@program` adds metadata to the Meta Catalog - this is used to link things up behind the scenes.
+* `@openapi.openedge.export` denotes that you wish to allow this class to be invoked from an external service -
+in this case REST. You may wish to customize the `executionMode` parameter, which determines how the code will be
+executed; however, the others should be left as their defaults. The options available for `executionMode` are:
+  * `single-run` creates a new instance of the class when a method is called, then disposes of it once the method
+  returns.
+  * `singleton` keeps an instance of the class in memory, then uses it to service all requests to the resource. Note
+  that despite there being a persistant instance, you should not store state between calls unless completely
+  necessary; REST is intended to be a stateless communication method, with each HTTP request happening in isolation.
+  * `external` specifies that the file only contains a single procedure or function to be called. This could be
+  useful if exposing a piece of legacy code, but it is a better idea to use the object-oriented style.
+* `progress.service.resource` sets up the REST resource and the URL that should route to it. The properties to be
+set on it are:
+  * `name` should be the public facing name of the resource - this can be used as an identifier on the client-side to
+  access server data, when using the JSDO library.
+  * `URI` is the base URI that the resource will be available at, relative to the root of the service. The URIs of the
+  class' methods will be appended to this value.
+  * `schemaName` is the name of the variable within the file located at `schemaName` that contains the entity's DataSet.
+  This will be used to expose the schema to the client, if you choose to use the JSDO library.
