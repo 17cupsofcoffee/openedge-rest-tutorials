@@ -28,17 +28,18 @@ on the file as a whole and on the individual methods.
 @openapi.openedge.export FILE(type="REST", executionMode="singleton", useReturnValue="false", writeDataSetBeforeImage="false").
 @progress.service.resource FILE(name="<Resource Name>", URI="/<Resource Name>", schemaName="<DataSet Variable Name>", schemaFile="<Path to Schema File>").
 ```
-* `@program` adds metadata to the Meta Catalog - this is used to link things up behind the scenes.
+* `@program` adds metadata to the class - this is used to link things up behind the scenes.
 * `@openapi.openedge.export` denotes that you wish to allow this class to be invoked from an external service -
 in this case REST. You may wish to customize the `executionMode` parameter, which determines how the code will be
 executed; however, the others should be left as their defaults. The options available for `executionMode` are:
   * `single-run` creates a new instance of the class when a method is called, then disposes of it once the method
   returns.
-  * `singleton` keeps an instance of the class in memory, then uses it to service all requests to the resource. Note
+  * `singleton` keeps an instance of the class in memory, then uses it to service all requests to the resource. This
+  may perform better than a `single-run` class (due to it only needing to be instantiated once), but note
   that despite there being a persistant instance, you should not store state between calls unless completely
   necessary; REST is intended to be a stateless communication method, with each HTTP request happening in isolation.
   * `external` specifies that the file only contains a single procedure or function to be called. This could be
-  useful if exposing a piece of legacy code, but it is a better idea to use the object-oriented style.
+  useful if exposing a piece of legacy code, but it is usually a better idea to use the object-oriented style.
 * `@progress.service.resource` sets up the REST resource and the URL that should route to it. The properties to be
 set on it are:
   * `name` should be the public facing name of the resource - this can be used as an identifier on the client-side to
@@ -47,3 +48,4 @@ set on it are:
   class' methods will be appended to this value.
   * `schemaName` is the name of the variable within the file located at `schemaName` that contains the entity's DataSet.
   This will be used to expose the schema to the client, if you choose to use the JSDO library.
+
