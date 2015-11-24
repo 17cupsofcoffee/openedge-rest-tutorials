@@ -33,7 +33,8 @@ DebugMsg=true
 These steps need to be carried out every time you create a new project, regardless of whether there are other projects running on the same PASOE instance.
 
 ### Creating a REST Project
-* Add the server to Progress Developer Studio and set up your project using either the REST or Mobile template - the former if you want fine-grained control over data mappings, or the latter if you wish to use the JSDO data transfer protocol.
+* Add the server to Progress Developer Studio and set up your project using either the REST or Data Object template - the former if you want fine-grained control over data mappings, or the latter if you wish to use the JSDO data transfer protocol.
+	* *Note: Data Object projects/services were referred to as Mobile projects/services in OpenEdge versions prior to 11.6. More information on the changes of terminology can be found in the [OpenEdge documentation here](https://documentation.progress.com/output/ua/OpenEdge_latest/index.html#page/gspub/data-object-service-terminology-and-uri-differen.html).*
 * Create an implementation of IHybridRealm and a Properties class in `<Project Root>/AppServer/auth`. Examples can be found on [Progress KnowledgeBase](http://knowledgebase.progress.com/servlet/fileField?id=0BEa0000000LNZj).
 
 ### Configuring Spring Security
