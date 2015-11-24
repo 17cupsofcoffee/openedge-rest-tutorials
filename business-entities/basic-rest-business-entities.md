@@ -19,8 +19,9 @@ as anything listed will be exposed through the REST service.
 ## REST Annotations
 While at this point, the business entity is functional (if somewhat minimal), it is still a good idea to have an
 understanding of exactly how OpenEdge creates the link between your class and the REST service so that you
-can convert/update existing logic in your application. It creates this mapping through ABL annotations, both
-on the file as a whole and on the individual methods.
+can convert/update existing logic in your application - the only difference between a standard business entity
+and a REST business entity is that there are extra ABL annotations applied, so exposing existing functionality
+is not too difficult a task.
 
 ### File Annotations
 ```ABL
@@ -28,7 +29,8 @@ on the file as a whole and on the individual methods.
 @openapi.openedge.export FILE(type="REST", executionMode="singleton", useReturnValue="false", writeDataSetBeforeImage="false").
 @progress.service.resource FILE(name="<Resource Name>", URI="/<Resource Name>", schemaName="<DataSet Variable Name>", schemaFile="<Path to Schema File>").
 ```
-* `@program` adds metadata to the class - this is used to link things up behind the scenes.
+* `@program` registers Meta Catalog data - this is unimportant to understand fully, but it is used to link things
+up behind the scenes.
 * `@openapi.openedge.export` denotes that you wish to allow this class to be invoked from an external service -
 in this case REST. You may wish to customize the `executionMode` parameter, which determines how the code will be
 executed; however, the others should be left as their defaults. The options available for `executionMode` are:
@@ -48,4 +50,3 @@ set on it are:
   class' methods will be appended to this value.
   * `schemaName` is the name of the variable within the file located at `schemaName` that contains the entity's DataSet.
   This will be used to expose the schema to the client, if you choose to use the JSDO library.
-
