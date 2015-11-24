@@ -39,7 +39,7 @@ executed; however, the others should be left as their defaults. The options avai
   necessary; REST is intended to be a stateless communication method, with each HTTP request happening in isolation.
   * `external` specifies that the file only contains a single procedure or function to be called. This could be
   useful if exposing a piece of legacy code, but it is a better idea to use the object-oriented style.
-* `progress.service.resource` sets up the REST resource and the URL that should route to it. The properties to be
+* `@progress.service.resource` sets up the REST resource and the URL that should route to it. The properties to be
 set on it are:
   * `name` should be the public facing name of the resource - this can be used as an identifier on the client-side to
   access server data, when using the JSDO library.
