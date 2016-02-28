@@ -39,4 +39,4 @@
   * `ValidatePassword(INTEGER, CHARACTER)` are used when the server is configured to receive passwords in clear-text.
   * `ValidatePassword(INTEGER, CHARACTER, CHARACTER, CHARACTER)` is used when the server is configured to receive passwords in HTTP Digest format.
   
-  Which one of these is used is decided by the `realmPwdAlg` setting in the Spring configuration file (as described in [Configuring OERealm Authentication](configuring_oerealm_authentication.md)). As only one can be active at once, it is safe (and probably a good security practice) to leave the unused function as a stub.
+  Which one of these is used is decided by the `realmPwdAlg` setting in the Spring configuration file (as described in [Configuring OERealm Authentication](ConfiguringOERealmAuthentication.md)). As only one can be active at once, it is safe (and probably a good security practice) to leave the unused function as a stub.
