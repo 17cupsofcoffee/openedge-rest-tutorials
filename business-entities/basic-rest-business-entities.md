@@ -36,10 +36,7 @@ in this case REST. You may wish to customize the `executionMode` parameter, whic
 executed; however, the others should be left as their defaults. The options available for `executionMode` are:
   * `single-run` creates a new instance of the class when a method is called, then disposes of it once the method
   returns.
-  * `singleton` keeps an instance of the class in memory, then uses it to service all requests to the resource. This
-  may perform better than a `single-run` class (due to it only needing to be instantiated once), but note
-  that despite there being a persistant instance, you should not store state between calls unless completely
-  necessary; REST is intended to be a stateless communication method, with each HTTP request happening in isolation.
+  * `singleton` keeps an instance of the class in memory, then uses it to service all requests to the resource. This is the default option, and the one that should be used in most cases, as it generally provides better performance than a `single-run` class (due to it only needing to be instantiated once). However, note that despite there being a persistant instance, you should avoid storing state within the class between calls; REST is intended to be a stateless communication method, with each HTTP request happening in isolation. Any persistant data should be written to the database instead.
   * `external` specifies that the file only contains a single procedure or function to be called. This could be
   useful if exposing a piece of legacy code, but it is usually a better idea to use the object-oriented style.
 * `@progress.service.resource` sets up the REST resource and the URL that should route to it. The properties to be
