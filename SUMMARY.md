@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [Business Entities](Business Entities/README.md)
+* [Business Entities](BusinessEntities/README.md)
    * [Basic REST Business Entities](Business Entities/basic_rest_business_entities.md)
 * [Authentication](Authentication/README.md)
    * [Configuring OERealm Authentication](Authentication/configuring_oerealm_authentication.md)
