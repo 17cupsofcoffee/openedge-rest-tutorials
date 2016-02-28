@@ -1,5 +1,5 @@
 # Summary
 
-* Business Entities
+* [Business Entities](business_entities.md)
    * Basic REST Business Entities
 
