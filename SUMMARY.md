@@ -5,5 +5,5 @@
    * [Basic REST Business Entities](Business Entities/basic_rest_business_entities.md)
 * [Authentication](Authentication/authentication.md)
    * [Configuring OERealm Authentication](Authentication/configuring_oerealm_authentication.md)
-   * [Implementing IHybridRealm](implementing_ihybridrealm.md)
+   * [Implementing IHybridRealm](Authentication/implementing_ihybridrealm.md)
 
