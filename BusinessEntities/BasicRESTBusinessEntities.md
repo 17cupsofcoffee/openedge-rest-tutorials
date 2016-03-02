@@ -45,5 +45,5 @@ set on it are:
   access server data, when using the JSDO library.
   * `URI` is the base URI that the resource will be available at, relative to the root of the service. The URIs of the
   class' methods will be appended to this value.
-  * `schemaName` is the name of the variable within the file located at `schemaName` that contains the entity's DataSet.
+  * `schemaName` is the name of the variable within the file located at `schemaFile` that contains the entity's DataSet.
   This will be used to expose the schema to the client, if you choose to use the JSDO library.
