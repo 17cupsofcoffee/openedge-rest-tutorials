@@ -7,5 +7,5 @@
    * [Configuring OERealm Authentication](Authentication/ConfiguringOERealmAuthentication.md)
    * [Implementing IHybridRealm](Authentication/ImplementingIHybridRealm.md)
 * [JavaScript Clients](JavaScriptClients/README.md)
-   * Using the Progress JSDO Library
+   * [Using the Progress JSDO Library](JavaScriptClients/UsingTheProgressJSDOLibrary.md)
 
